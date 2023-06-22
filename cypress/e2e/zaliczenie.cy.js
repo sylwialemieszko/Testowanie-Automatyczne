@@ -1,5 +1,9 @@
 /// <reference types="cypress" />
 
+// import OnetPage from '../PageObjects/onet'
+// const onet = new OnetPage();
+
+
 
 Cypress.Commands.add('akceptujCiasteczka', () => {
     cy.get('.cmp-intro_acceptAll').click();
@@ -11,11 +15,26 @@ Cypress.Commands.add('akceptujCiasteczka', () => {
 
   beforeEach(() => {
       
+    // cy.visit.OnetPage
+
     cy.visit('https://www.onet.pl')
+    cy.get('.Menu_navMoreDots__hGd4n').as('programTV')
+    // cy.get('.sc-a7eb406c-10 > .sc-ca90c2ac-0').as('zaloguj')
+    cy.get('.Shortcuts_shortcutsJakDojade__xXI8e').as('jakDojade')
+    cy.get('.MenuIcon_highlighted__X7zNd > .MenuIcon_labelText__0n1xb').as('poczta')
+    cy.get('.CollapsedItems_collapsedMenu__l_XFH > :nth-child(2) > [href="https://programtv.onet.pl/"]').as('seriale')
+    cy.get('[href="http://gameplanet.onet.pl/?utm_source=m.onet.pl&utm_medium=banner&utm_campaign=ikona"] > .MenuIcon_labelText__0n1xb').as('gry')
     
     cy.fixture('zal.fixtures').then(function(zawartosc_pliku){
         this.logowanie=zawartosc_pliku
      })
+     
+    //  cy.get('.cmp-intro_intro').as('oknoCiasteczek')
+    //  cy.get('.button').as('kliknij')
+     
+
+     
+
 })
 describe('test strony onet', () => {
 
@@ -27,20 +46,20 @@ describe('test strony onet', () => {
         cy.get('.cmp-intro_intro').should('not.be.visible')
              
     })
+
     it('ustawienia zaawansowane cookies - odrzucenie ciasteczek', () => {
         cy.get('.cmp-intro_intro').should('be.visible')
         cy.odrzucCisteczka()
         cy.get('.cmp-intro_rejectAll > span').click()
     })
-    // 
-    
+
     
 
     it('sprawdzenie wyświetlanych seriali w TV', () => {
         // cy.get('.cmp-intro_intro').should('be.visible')
         cy.akceptujCiasteczka();
-        cy.get('.Menu_navMoreDots__hGd4n').click()
-        cy.get('.CollapsedItems_collapsedMenu__l_XFH > :nth-child(2) > [href="https://programtv.onet.pl/"]').click()
+        cy.get('@programTV').click()
+        cy.get('@seriale').click()
         cy.get('.catsLnk').click()
         cy.get('.cat3 > a').click()
      
@@ -49,13 +68,15 @@ describe('test strony onet', () => {
     it('sprawdź pociągi z Białegostoku do Warszawy', ()=> {
         cy.get('.cmp-intro_intro').should('be.visible')
         cy.akceptujCiasteczka();
-        cy.get('.Shortcuts_shortcutsJakDojade__xXI8e').click()
+        cy.get('@jakDojade').click()
         // cy.get('.cmp-intro_intro').should('be.visible')
-        cy.get('.cmp-intro_acceptAll > span').click()
+        cy.akceptujCiasteczka();
         cy.get('.button').click()
+        // cy.get('@kliknij').click()
         cy.get('[data-cy="city-list-input"]').clear().type('Białystok')
         cy.get('[data-cy="city-list-item-city"]').click()
         cy.get('[data-cy="search-engine-intercity-button"] > .tab-button > .tab-button__title').click()
+        // cy.get('@kliknij').click()
         cy.get('.button').click()
         cy.get('[data-cy="planner-start-point-input"] > .point-form-field > [data-cy="planner-editable-input"] > .editable-input > .editable-input__content-container > .editable-input__content').clear().type('Białystok').wait(1000)
         cy.get('[data-cy="planner-search-suggestions"] > :nth-child(1) > .container').click()
@@ -68,7 +89,7 @@ describe('test strony onet', () => {
         
                 cy.get('.cmp-intro_intro').should('be.visible')
                 cy.akceptujCiasteczka();
-                cy.get('.MenuIcon_highlighted__X7zNd > .MenuIcon_labelText__0n1xb').click();
+                cy.get('@poczta').click();
                 
                 cy.get('#email').clear().type(this.logowanie.poprawneDane.email);
                 cy.get('#password').clear().type(this.logowanie.poprawneDane.password);
@@ -79,7 +100,7 @@ describe('test strony onet', () => {
             it('nieudane logowanie do poczty - niepoprawny adres mailowy', function() {
                     cy.get('.cmp-intro_intro').should('be.visible')
                     cy.akceptujCiasteczka();
-                    cy.get('.MenuIcon_highlighted__X7zNd > .MenuIcon_labelText__0n1xb').click();
+                    cy.get('@poczta').click();
                     
                     cy.get('#email').clear().type(this.logowanie.niepoprawnyMail.email);
                     cy.get('#password').clear().type(this.logowanie.niepoprawnyMail.password);
@@ -91,13 +112,16 @@ describe('test strony onet', () => {
             it('nieudane logowanie do poczty - niepoprawne hasło', function() {
                 cy.get('.cmp-intro_intro').should('be.visible')
                 cy.akceptujCiasteczka();
-                cy.get('.MenuIcon_highlighted__X7zNd > .MenuIcon_labelText__0n1xb').click();
+                cy.get('@poczta').click();
                 cy.get('#email').clear().type(this.logowanie.niepoprawneHaslo.email);
                 cy.get('#password').clear().type(this.logowanie.niepoprawneHaslo.password);
                 cy.get('.sc-a7eb406c-10 > .sc-ca90c2ac-0').click()
                 cy.get('.sc-c4c71639-3').should('be.visible').contains('Nieprawidłowy email lub hasło')
+
                     })
-            it('sprawdzenie pogody w Białymstoku', ()=>  {
+
+
+            it('sprawdzenie pogody w Białymstoku', () =>  {
                 cy.get('.cmp-intro_intro').should('be.visible')
                 cy.akceptujCiasteczka();
                 cy.get('.Weather_weatherInfo__hwdBM').click().wait(1000);
@@ -124,13 +148,11 @@ describe('test strony onet', () => {
                 cy.get(':nth-child(3) > .offer__outer').click()
         
                 })
-                it('wyszukanie gry', ()=> {
-                    cy.get('.cmp-intro_intro').should('be.visible')
+                it('wyszukanie gry', () => {
+                    // cy.get('.cmp-intro_intro').should('be.visible')
                     cy.akceptujCiasteczka();
-                    cy.get('[href="http://gameplanet.onet.pl/?utm_source=m.onet.pl&utm_medium=banner&utm_campaign=ikona"] > .MenuIcon_labelText__0n1xb').click()
+                    cy.get('@gry').click()
                     cy.get('.search__input').clear().type('mahjong').type('{enter}')
                     cy.get('.list > :nth-child(8) > .tile > .js-gtm-click > .tile__wrapper').click()
                     })
 })
-
-
