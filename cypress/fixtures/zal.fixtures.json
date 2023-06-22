@@ -1,0 +1,16 @@
+{
+    
+    "poprawneDane": {
+      "email": "testowanko@spoko.pl",
+      "password": "Polibuda!23"
+    },
+    "niepoprawnyMail": {
+      "email": "niepoprawn@eyxample.com",
+      "password": "Polibuda!23"
+    },
+    "niepoprawneHaslo": {
+      "email": "testowanko@spoko.pl",
+      "password": "Polibuda123"
+    }
+  
+}
