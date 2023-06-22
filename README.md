@@ -192,9 +192,73 @@ zaliczenie
 **Krok 7** Kliknij żółty przycisk "dalej", aby się zalogować
 **Rezultat:** Wyświetla komunikat "Nieprawidłowy email lub hasło"
 
+## 9. Sprawdzenie aktualnej pogody w Białymstoku
+**ID**	it8
+**Warunki początkowe:**	spełnione warunki z ID12345, hasło do poczty
+
+**Krok 1** Otwórz stronę https://www.onet.pl
+**Rezultat:** Strona internetowa wczytana prawidłowo
+
+**Krok 2** Pojawia się okno dialogowe dotyczące cookies
+**Rezultat:** Możliwośc wyboru dwóch opcji cookies
+
+**Krok 3** Kliknij żółty przycisk "Przejdź do serwisu"
+**Rezultat:** Ciasteczka zaakceptowane. Okno dialogowe znika. Przenosi do strony głównej onet.pl
+
+**Krok 4** W lewym górnym rogu strony, pod paskiem menu, wybierz i kliknij na pole, które wskazuje informacje o pogodzie
+**Rezultat:** Przenosi na podstronę zawierającą anktualne informacjie o pogodzie
+
+**Krok 5** W polu "wpisz nazwę miejscowości" wpisz "Białystok
+**Rezultat:** Rozwija się lista z podpowiedziami
+
+**Krok 6** Kliknij pierwszą pozycję z listy
+**Rezultat:** Strona przeladowuje się i wskazuje aktualną pogodę w Białymstoku.
 
 ## 10. Wybór najnowszego ogłoszenia mieszkania w Bialymstoku, ustawiając filtry
 **ID**	it9
+**Warunki początkowe:**	spełnione warunki z ID12345
+
+**Krok 1** Otwórz stronę https://www.onet.pl
+**Rezultat:** Strona internetowa wczytana prawidłowo
+
+**Krok 2** Pojawia się okno dialogowe dotyczące cookies
+**Rezultat:** Możliwośc wyboru dwóch opcji cookies
+
+**Krok 3** Kliknij żółty przycisk "Przejdź do serwisu"
+**Rezultat:** Ciasteczka zaakceptowane. Okno dialogowe znika. Przenosi do strony głównej onet.pl
+
+**Krok 4** Na stronie głównej onet.pl, wybierz z paska menu kategorię "nieruchomości". 
+**Rezultat:** Rozwija się lista woboru
+
+**Krok 5** Z listy wyboru wybierz "mieszkanie"
+**Rezultat:** Przenosi do strony z ogłoszeniami mieszkań
+
+**Krok 6** Pojawia się okno dialogowe dotyczące danych osobowych. Kliknij "przejdz do serwisu" aby wyrazić zgodę na przetwarzanie danych osobowych
+**Rezultat:** Zgoda na przetwarzanie danych wyrażona. Zamknięte okno dialogowe.
+
+**Krok 7** Na pasu z filtrami ustaw: "wynajmę"
+**Rezultat:** Filtr ustawiony prawidłowo. Pojawiają sie przefiltrowane oferty
+
+**Krok 8** Na pasku z filtrami wybierz "mieszkanie"
+**Rezultat:** Filtr ustawiony prawidłowo. Pojawiają sie przefiltrowane oferty mieszkań
+
+**Krok 9** W kolejnym polu wpisz "Białystok" i wybierz pierwszą dostępną podpowiedź
+**Rezultat:** Filtr ustawiony prawidłowo. Pojawiają sie przefiltrowane oferty mieszkań w Białymstoku
+
+**Krok 10** Na pasku z filtrami otwórz zakładkę "więcej filtrów". Po rozwinięciu listy zaznacz checkboxy: liczba pokoi 1 oraz 2, zalety: balkon
+**Rezultat:** Filtr ustawiony prawidłowo. Pojawiają sie przefiltrowane oferty mieszkań w Białymstoku, jedno oraz dwupokojowe, z balkonem
+
+**Krok 11** Kliknij w pole "sortuj" 
+**Rezultat:** Otwiera się okno dialogowe z możliwościami wyboru sortowania ogłoszeń
+
+**Krok 12** W otwartym oknie dialogowym ustaw sortowanie "data dodania: od najnowszych"
+**Rezultat:** Sortowanie ustawione. Oferty mieszkań przesortowane wg najnowszych ogłoszeń
+
+**Krok 13** Kliknij w pierwsze ogłoszenie
+**Rezultat:** Ogłoszenie otwarte prawidłowo
+
+## 11. wyszukanie gry
+**ID**	it10
 **Warunki początkowe:**	spełnione warunki z ID12345
 
 **Krok 1** Otwórz stronę https://www.onet.pl
@@ -214,4 +278,3 @@ zaliczenie
 
 **Krok 6** Kliknij w grę znajdującą się po prawej stronie - drugą od góry
 **Rezultat:** Przenosi na stronę z wybraną grą
-
